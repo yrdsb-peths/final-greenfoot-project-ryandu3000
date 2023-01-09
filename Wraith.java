@@ -10,11 +10,9 @@ public class Wraith extends Actor
 {
     GreenfootImage[] walkingRight = new GreenfootImage[12];
     GreenfootImage[] walkingLeft = new GreenfootImage[12];
-    SimpleTimer animationTimer = new SimpleTimer();
     
     int imageIndex = 0;
-    
-    boolean isMoving = false;
+    SimpleTimer walkingTimer = new SimpleTimer();
     String facing = "right";
     
     public Wraith()
@@ -32,20 +30,21 @@ public class Wraith extends Actor
             walkingLeft[i].scale(130,105);
         }
         
-        animationTimer.mark();
+        walkingTimer.mark();
         
         // Set initial image
         setImage(walkingRight[0]);
+        
     }
     
     public void animateWraith()
     {
-        if(animationTimer.millisElapsed() < 80)
+        if(walkingTimer.millisElapsed() < 80)
         {
             return;
         }
-        animationTimer.mark();
-        
+        walkingTimer.mark();
+    
         if(facing.equals("right"))
         {
             setImage(walkingRight[imageIndex]);
@@ -55,7 +54,7 @@ public class Wraith extends Actor
         {
             setImage(walkingLeft[imageIndex]);
             imageIndex = (imageIndex + 1) % walkingLeft.length;
-        }
+        } 
     }
     
     public void act()
