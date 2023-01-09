@@ -8,34 +8,66 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Wraith extends Actor
 {
-    GreenfootImage[] idle = new GreenfootImage[12];
+    GreenfootImage[] walkingRight = new GreenfootImage[12];
+    GreenfootImage[] walkingLeft = new GreenfootImage[12];
+    
+    int imageIndex = 0;
+    SimpleTimer walkingTimer = new SimpleTimer();
+    String facing = "right";
     
     public Wraith()
     {
-        for(int i = 0; i < idle.length; i++)
+        for(int i = 0; i < walkingRight.length; i++)
         {
-            idle[i] = new GreenfootImage("images/Wraith_01/Sequences/Idle/Idle" + i + ".png");
-            idle[i].scale(65,53);
+            walkingRight[i] = new GreenfootImage("images/Wraith_01/Sequences/Walking/Forward" + i + ".png");
+            walkingRight[i].scale(130,105);
         }
-        setImage(idle[0]);
+        
+        for(int i = 0; i < walkingLeft.length; i++)
+        {
+            walkingLeft[i] = new GreenfootImage("images/Wraith_01/Sequences/Walking/Forward" + i + ".png");
+            walkingLeft[i].mirrorHorizontally();
+            walkingLeft[i].scale(130,105);
+        }
+        
+        walkingTimer.mark();
+        
+        // Set initial image
+        setImage(walkingRight[0]);
+        
     }
     
-    int imageIndex = 0;
     public void animateWraith()
     {
-        setImage(idle[imageIndex]);
-        imageIndex = (imageIndex + 1) % idle.length;
+        if(walkingTimer.millisElapsed() < 80)
+        {
+            return;
+        }
+        walkingTimer.mark();
+    
+        if(facing.equals("right"))
+        {
+            setImage(walkingRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkingRight.length;
+        }
+        else
+        {
+            setImage(walkingLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkingLeft.length;
+        } 
     }
     
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-2);
+            facing = "left";
+            move(-1);
         }
         else if(Greenfoot.isKeyDown("right"))
         {
-            move(2);
+            facing = "right";
+            move(1);
         }
         
         animateWraith();
