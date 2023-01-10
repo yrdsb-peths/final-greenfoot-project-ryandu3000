@@ -34,7 +34,6 @@ public class Wraith extends Actor
         
         // Set initial image
         setImage(walkingRight[0]);
-        
     }
     
     public void animateWraith()
@@ -59,12 +58,12 @@ public class Wraith extends Actor
     
     public void act()
     {
-        if(Greenfoot.isKeyDown("left"))
+        if(Greenfoot.isKeyDown("left") && Princess.getCanMove() == true)
         {
             facing = "left";
             move(-1);
         }
-        else if(Greenfoot.isKeyDown("right"))
+        else if(Greenfoot.isKeyDown("right") && Princess.getCanMove() == true)
         {
             facing = "right";
             move(1);

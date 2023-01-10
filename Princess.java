@@ -11,6 +11,7 @@ public class Princess extends Actor
     GreenfootImage[] crying = new GreenfootImage[12];
     int imageIndex = 0;
     SimpleTimer cryingTimer = new SimpleTimer();
+    public static boolean canMove = false;
     
     public Princess()
     {
@@ -38,6 +39,12 @@ public class Princess extends Actor
             cryingTimer.mark();
         }
     }
+    
+    public static boolean getCanMove()
+    {
+        return canMove;
+    }
+    
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
@@ -45,7 +52,9 @@ public class Princess extends Actor
         if(isAtEdge())
         {
             world.removeObject(this);   
+            canMove = true;
         }
+        
     }
     
     
