@@ -16,18 +16,37 @@ public class Princess extends Actor
     {
         for(int i = 0; i < crying.length; i++)
         {
-            crying[i] = new GreenfootImage("images/Wraith_02/PNG Sequences/Hurt/Wraith_02_Hurt_00" + i + ".png");
+            crying[i] = new GreenfootImage("images/Wraith_02/PNG Sequences/Hurt/Hurt" + i + ".png");
+            crying[i].scale(130,105);
         }
         
         cryingTimer.mark();
         setImage(crying[0]);
     }
     
-    public void act()
+    public void animationsequence1()
     {
-        if(cryingTimer.millisElapsed() < 80)
+        while(isAtEdge() == false)
         {
-            return;
+            if(cryingTimer.millisElapsed() < 80)
+            {
+                return;
+            }
+            move(6);
+            setImage(crying[imageIndex]);
+            imageIndex = (imageIndex + 1) % crying.length;
+            cryingTimer.mark();
         }
     }
+    public void act()
+    {
+        MyWorld world = (MyWorld) getWorld();
+        animationsequence1();
+        if(isAtEdge())
+        {
+            world.removeObject(this);   
+        }
+    }
+    
+    
 }

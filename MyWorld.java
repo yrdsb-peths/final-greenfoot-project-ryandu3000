@@ -18,7 +18,14 @@ public class MyWorld extends World
         super(800, 450, 1);
         Wraith wraith = new Wraith();
         addObject(wraith, 50, 370);
+        
+        Princess npc = new Princess();
+        addObject(npc, 120, 370);
     }
     
-    
+    public void switchWorld1()
+    {
+        World1 gameWorld = new World1();
+        Greenfoot.setWorld(gameWorld);
+    }
 }
