@@ -70,6 +70,11 @@ public class Wraith extends Actor
             move(1);
         }
         
-        animateWraith();
+        animateWraith();   
+        MyWorld world = (MyWorld) getWorld();
+        if(isAtEdge())
+        {
+            world.switchWorld1();
+        }
     }
 }
