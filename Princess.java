@@ -11,7 +11,7 @@ public class Princess extends Actor
     GreenfootImage[] crying = new GreenfootImage[12];
     int imageIndex = 0;
     SimpleTimer cryingTimer = new SimpleTimer();
-    public static boolean canMove = false;
+    public static boolean canMove = true;
     
     public Princess()
     {

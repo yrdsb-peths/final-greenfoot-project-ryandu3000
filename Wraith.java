@@ -13,8 +13,11 @@ public class Wraith extends Actor
     
     int imageIndex = 0;
     SimpleTimer walkingTimer = new SimpleTimer();
+    SimpleTimer fallingTimer = new SimpleTimer();
     String facing = "right";
-    
+    private int speed = 2;
+    private int vSpeed = 0;
+    private int acceleration = 2;
     public Wraith()
     {
         for(int i = 0; i < walkingRight.length; i++)
@@ -56,22 +59,51 @@ public class Wraith extends Actor
         } 
     }
     
+    public void fall()
+    {
+        setLocation(getX(),getY() + vSpeed);
+        vSpeed = vSpeed + acceleration;
+    }
+    
+    public boolean onGround()
+    {
+        return getY() == 370;
+    }
+
+    public void checkFall()
+    {
+        if(onGround())
+        {
+            vSpeed = 0;
+        }
+        else
+        {
+            fall();
+        }
+    }
+    
     public void act()
     {
+        checkFall();
         if(Greenfoot.isKeyDown("left") && Princess.getCanMove() == true)
         {
             facing = "left";
-            move(-1);
+            setLocation(getX() - speed, getY());
         }
         else if(Greenfoot.isKeyDown("right") && Princess.getCanMove() == true)
         {
             facing = "right";
-            move(1);
+            setLocation(getX() + speed, getY());
+        }
+        if(Greenfoot.isKeyDown("up") && Princess.getCanMove() == true && onGround())
+        {
+            vSpeed = -20;
+            fall();
         }
         
         animateWraith();   
         MyWorld world = (MyWorld) getWorld();
-        if(isAtEdge())
+        if(isAtEdge() && getX() > 20)
         {
             world.switchWorld1();
         }
