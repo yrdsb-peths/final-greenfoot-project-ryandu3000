@@ -33,7 +33,7 @@ public class Princess extends Actor
             {
                 return;
             }
-            move(10);
+            move(8);
             setImage(crying[imageIndex]);
             imageIndex = (imageIndex + 1) % crying.length;
             cryingTimer.mark();
