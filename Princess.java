@@ -11,14 +11,14 @@ public class Princess extends Actor
     GreenfootImage[] crying = new GreenfootImage[12];
     int imageIndex = 0;
     SimpleTimer cryingTimer = new SimpleTimer();
-    public static boolean canMove = true;
+    public static boolean canMove = false;
     
     public Princess()
     {
         for(int i = 0; i < crying.length; i++)
         {
             crying[i] = new GreenfootImage("images/Wraith_02/PNG Sequences/Hurt/Hurt" + i + ".png");
-            crying[i].scale(130,105);
+            crying[i].scale(61,88);
         }
         
         cryingTimer.mark();
@@ -27,13 +27,13 @@ public class Princess extends Actor
     
     public void animationsequence1()
     {
-        while(isAtEdge() == false)
+        while(!isAtEdge())
         {
             if(cryingTimer.millisElapsed() < 80)
             {
                 return;
             }
-            move(6);
+            move(10);
             setImage(crying[imageIndex]);
             imageIndex = (imageIndex + 1) % crying.length;
             cryingTimer.mark();
@@ -45,17 +45,18 @@ public class Princess extends Actor
         return canMove;
     }
     
-    public void act()
+    public void checkRemove()
     {
-        MyWorld world = (MyWorld) getWorld();
-        animationsequence1();
-        if(isAtEdge())
+        if(isTouching(Portal.class))
         {
+            MyWorld world = (MyWorld) getWorld();
             world.removeObject(this);   
             canMove = true;
         }
-        
     }
-    
-    
+    public void act()
+    {
+        animationsequence1();
+        checkRemove();
+    }
 }

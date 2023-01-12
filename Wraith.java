@@ -10,10 +10,12 @@ public class Wraith extends Actor
 {
     GreenfootImage[] walkingRight = new GreenfootImage[12];
     GreenfootImage[] walkingLeft = new GreenfootImage[12];
+    GreenfootImage[] dodgingRight = new GreenfootImage[13];
+    GreenfootImage[] dodgingLeft = new GreenfootImage[13];
     
     int imageIndex = 0;
     SimpleTimer walkingTimer = new SimpleTimer();
-    SimpleTimer fallingTimer = new SimpleTimer();
+    SimpleTimer dodgingTimer = new SimpleTimer();
     String facing = "right";
     private int speed = 2;
     private int vSpeed = 0;
@@ -23,14 +25,27 @@ public class Wraith extends Actor
         for(int i = 0; i < walkingRight.length; i++)
         {
             walkingRight[i] = new GreenfootImage("images/Wraith_01/Sequences/Walking/Forward" + i + ".png");
-            walkingRight[i].scale(130,105);
+            walkingRight[i].scale(61,88);
         }
         
         for(int i = 0; i < walkingLeft.length; i++)
         {
             walkingLeft[i] = new GreenfootImage("images/Wraith_01/Sequences/Walking/Forward" + i + ".png");
             walkingLeft[i].mirrorHorizontally();
-            walkingLeft[i].scale(130,105);
+            walkingLeft[i].scale(61,88);
+        }
+        
+        for(int i = 0; i < dodgingRight.length; i++)
+        {
+            dodgingRight[i] = new GreenfootImage("images/Wraith_01/Sequences/Dying/Dying" + i + ".png");
+            dodgingRight[i].scale(105,130);
+        }
+        
+        for(int i = 0; i < dodgingLeft.length; i++)
+        {
+            dodgingLeft[i] = new GreenfootImage("images/Wraith_01/Sequences/Dying/Dying" + i + ".png");
+            dodgingLeft[i].mirrorHorizontally();
+            dodgingLeft[i].scale(67,97);
         }
         
         walkingTimer.mark();
@@ -82,9 +97,8 @@ public class Wraith extends Actor
         }
     }
     
-    public void act()
+    public void checkKeys()
     {
-        checkFall();
         if(Greenfoot.isKeyDown("left") && Princess.getCanMove() == true)
         {
             facing = "left";
@@ -100,8 +114,16 @@ public class Wraith extends Actor
             vSpeed = -20;
             fall();
         }
-        
-        animateWraith();   
+        //elif(Greenfoot.isKeyDown("down") && Princess.getCanMove() == true)
+        //{
+            
+        //}
+    }
+    public void act()
+    {
+        checkFall();
+        checkKeys();
+        animateWraith(); 
         MyWorld world = (MyWorld) getWorld();
         if(isAtEdge() && getX() > 20)
         {

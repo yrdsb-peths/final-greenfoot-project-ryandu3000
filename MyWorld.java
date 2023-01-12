@@ -18,14 +18,27 @@ public class MyWorld extends World
         super(800, 450, 1);
         Wraith wraith = new Wraith();
         addObject(wraith, 50, 370);
-        
+
         Princess npc = new Princess();
         addObject(npc, 120, 370);
+
+        //Portal portal = new Portal();
+        //addObject(portal, 780,334);
+        prepare();
     }
-    
+
     public void switchWorld1()
     {
         World1 gameWorld = new World1();
         Greenfoot.setWorld(gameWorld);
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Portal portal = new Portal();
+        addObject(portal,736,318);
     }
 }
