@@ -17,8 +17,8 @@ public class Princess extends Actor
     {
         for(int i = 0; i < crying.length; i++)
         {
-            crying[i] = new GreenfootImage("images/Wraith_02/PNG Sequences/Hurt/Hurt" + i + ".png");
-            crying[i].scale(61,88);
+            crying[i] = new GreenfootImage("images/Wraith_02/PNG Sequences/Hurt/Wraith_02_Hurt_00" + i + ".png");
+            crying[i].scale(73,88);
         }
         
         cryingTimer.mark();
@@ -29,11 +29,11 @@ public class Princess extends Actor
     {
         while(!isAtEdge())
         {
-            if(cryingTimer.millisElapsed() < 80)
+            if(cryingTimer.millisElapsed() < 90)
             {
                 return;
             }
-            move(8);
+            move(10);
             setImage(crying[imageIndex]);
             imageIndex = (imageIndex + 1) % crying.length;
             cryingTimer.mark();
@@ -47,7 +47,7 @@ public class Princess extends Actor
     
     public void checkRemove()
     {
-        if(isTouching(Portal.class))
+        if(isAtEdge())
         {
             MyWorld world = (MyWorld) getWorld();
             world.removeObject(this);   
