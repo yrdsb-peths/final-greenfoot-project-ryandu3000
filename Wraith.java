@@ -20,7 +20,6 @@ public class Wraith extends Actor
     private int speed = 2;
     private int vSpeed = 0;
     private int acceleration = 2;
-    
     public Wraith()
     {
         for(int i = 0; i < walkingRight.length; i++)
@@ -120,21 +119,15 @@ public class Wraith extends Actor
             
         //}
     }
-    
-    public void checkSwitch()
-    {
-        MyWorld world = (MyWorld) getWorld();
-        if(isTouching(Portal.class))
-        {
-            world.switchWorld1();
-        }
-    }
-    
     public void act()
     {
         checkFall();
         checkKeys();
         animateWraith(); 
-        checkSwitch();
+        MyWorld world = (MyWorld) getWorld();
+        if(isTouching(Portal.class))
+        {
+            world.switchWorld1();
+        }
     }
 }
