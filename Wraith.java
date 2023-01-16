@@ -125,7 +125,7 @@ public class Wraith extends Actor
         checkKeys();
         animateWraith(); 
         MyWorld world = (MyWorld) getWorld();
-        if(isTouching(Portal.class))
+        if(isAtEdge() && getX() > 20)
         {
             world.switchWorld1();
         }
