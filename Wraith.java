@@ -41,7 +41,7 @@ public class Wraith extends Actor
     
     public void animateWraith()
     {
-        if(walkingTimer.millisElapsed() < 80)
+        if(walkingTimer.millisElapsed() < 90)
         {
             return;
         }
@@ -102,10 +102,6 @@ public class Wraith extends Actor
         }
         
         animateWraith();   
-        MyWorld world = (MyWorld) getWorld();
-        if(isAtEdge() && getX() > 20)
-        {
-            world.switchWorld1();
-        }
+        MyWorld world = (MyWorld) getWorld(); // do stuff for specific worlds addedToWorld
     }
 }

@@ -22,10 +22,4 @@ public class MyWorld extends World
         Princess npc = new Princess();
         addObject(npc, 120, 370);
     }
-    
-    public void switchWorld1()
-    {
-        World1 gameWorld = new World1();
-        Greenfoot.setWorld(gameWorld);
-    }
 }
