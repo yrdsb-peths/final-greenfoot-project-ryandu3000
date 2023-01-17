@@ -85,19 +85,19 @@ public class Wraith extends Actor
     
     public void checkMovement()
     {
-        if(Greenfoot.isKeyDown("left") && Princess.getCanMove() == true)
+        if(Greenfoot.isKeyDown("left") && Thief.getCanMove() == true)
         {
             facing = "left";
             setLocation(getX() - speed, getY());
         }
-        else if(Greenfoot.isKeyDown("right") && Princess.getCanMove() == true)
+        else if(Greenfoot.isKeyDown("right") && Thief.getCanMove() == true)
         {
             facing = "right";
             setLocation(getX() + speed, getY());
         }
-        if(Greenfoot.isKeyDown("up") && Princess.getCanMove() == true && onGround())
+        if(Greenfoot.isKeyDown("up") && Thief.getCanMove() == true && onGround())
         {
-            vSpeed = -20;
+            vSpeed = -25;
             fall();
         }
     }
@@ -118,7 +118,7 @@ public class Wraith extends Actor
         checkFall();
         checkMovement();
         animateWraith();
-        if(Switch && isAtEdge())
+        if(Switch && isAtEdge() && getX() > 200)
         {
             World1 gameArea = new World1();
             Greenfoot.setWorld((gameArea));

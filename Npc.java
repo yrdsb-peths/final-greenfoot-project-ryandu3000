@@ -11,7 +11,7 @@ public class Npc extends Actor
     GreenfootImage[] attack = new GreenfootImage[12];
     int imageIndex = 0;
     SimpleTimer attackTimer = new SimpleTimer();
-    int speed = 200;
+
     public Npc()
     {
         for(int i = 0; i < attack.length; i++)
@@ -26,7 +26,7 @@ public class Npc extends Actor
     
     public void sequence()
     {
-        if(attackTimer.millisElapsed() < speed)
+        if(attackTimer.millisElapsed() < 150)
         {
             return;
         }
