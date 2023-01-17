@@ -18,6 +18,7 @@ public class Wraith extends Actor
     private int speed = 2;
     private int vSpeed = 0;
     private int acceleration = 2;
+    private boolean Switch = true;
     public Wraith()
     {
         for(int i = 0; i < walkingRight.length; i++)
@@ -82,9 +83,8 @@ public class Wraith extends Actor
         }
     }
     
-    public void act()
+    public void checkMovement()
     {
-        checkFall();
         if(Greenfoot.isKeyDown("left") && Princess.getCanMove() == true)
         {
             facing = "left";
@@ -100,8 +100,29 @@ public class Wraith extends Actor
             vSpeed = -20;
             fall();
         }
-        
-        animateWraith();   
-        MyWorld world = (MyWorld) getWorld(); // do stuff for specific worlds addedToWorld
+    }
+    public void addedToMyWorld()
+    {
+        MyWorld world = (MyWorld) getWorld();
+        Switch = true;
+    }
+    
+    public void addedToWorld1()
+    {
+        World1 world = (World1) getWorld();
+        Switch = false;
+    }
+    
+    public void act()
+    {
+        checkFall();
+        checkMovement();
+        animateWraith();
+        if(Switch && isAtEdge())
+        {
+            World1 gameArea = new World1();
+            Greenfoot.setWorld((gameArea));
+        }
     }
 }
+
