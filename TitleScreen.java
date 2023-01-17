@@ -10,6 +10,7 @@ public class TitleScreen extends World
 {
     // Label
     Label label1 = new Label("Wraith Chaser",100);
+    Label label2 = new Label("space \u2192", 30);
     
     //Sounds
     GreenfootSound backgroundMusic = new GreenfootSound("intro.mp3");
@@ -22,12 +23,12 @@ public class TitleScreen extends World
         super(800, 450, 1); 
         
         // Adds the label and deoration onto the world
-        addObject(label1, getWidth()/2, 100);
+        addObject(label1, getWidth()/2, 80);
+        addObject(label2, 725, 425);
         WraithDeco wraithDeco = new WraithDeco();
         ThiefDeco thiefDeco = new ThiefDeco();
-        addObject(wraithDeco,300,344);
-        addObject(thiefDeco,544,344);
-        backgroundMusic.playLoop();
+        addObject(wraithDeco,300,324);
+        addObject(thiefDeco,544,324);
     }
 
     /**
@@ -36,6 +37,8 @@ public class TitleScreen extends World
      */
     public void act()
     {
+        backgroundMusic.playLoop();
+        
         // Whenever space is pressed changes the world to InstructionPage.
         if(Greenfoot.isKeyDown("space"))
         {

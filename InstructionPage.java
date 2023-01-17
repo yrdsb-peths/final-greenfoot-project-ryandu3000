@@ -16,6 +16,7 @@ public class InstructionPage extends World
     Label label5 = new Label("Use \u2190 \u2192 to move and \u2191 to jump!", 30);
     Label label6 = new Label("Press  <space>  to  Start", 30);
     
+    SimpleTimer delay = new SimpleTimer();
     /**
      * Constructor for objects of class InstructionPage.
      */
@@ -32,7 +33,9 @@ public class InstructionPage extends World
         addObject(label3,337,180);
         addObject(label4, 510, 230);
         addObject(label5, 450, 260);
-        addObject(label6, 650,428);
+        addObject(label6, 650,400);
+        
+        delay.mark();
     }
     
     /**
@@ -42,7 +45,7 @@ public class InstructionPage extends World
     public void act()
     {
         // Whenever space is pressed change the world to MyWorld.
-        if(Greenfoot.isKeyDown("space"))
+        if(Greenfoot.isKeyDown("space") && delay.millisElapsed() > 500)
         {
             MyWorld gameWorld = new MyWorld();
             Greenfoot.setWorld(gameWorld);
