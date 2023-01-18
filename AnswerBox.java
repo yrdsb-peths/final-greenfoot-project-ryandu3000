@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class AnswerBox extends Actor
 {
-    public static int answer = 0;
     public AnswerBox()
     {
         GreenfootImage image = getImage();
@@ -22,7 +21,6 @@ public class AnswerBox extends Actor
     {
         if(Greenfoot.mouseClicked(this))
         {
-            System.out.println("Test 0");
             World1 world = (World1) getWorld();
             world.checkanswer(0);
         }

@@ -11,11 +11,16 @@ public class World1 extends World
 {
     // Sounds
     GreenfootSound backgroundMusic = new GreenfootSound("background.mp3");
+    GreenfootSound correct = new GreenfootSound("correct.mp3");
+    GreenfootSound wrong = new GreenfootSound("wrong.mp3");
     
-    int score = 0;
+    // Variables
+    public static int score = 0;
     int level = 1;
     int answer = 0;
     int rand = 0;
+    
+    // Labels
     Label scoreLabel = new Label(score,40);
     Label question = new Label("",50);
     Label answer1 = new Label("",20);
@@ -23,17 +28,29 @@ public class World1 extends World
     Label answer3 = new Label("",20);
     Label answer4 = new Label("",20);
     
-    /**
-     * Constructor for objects of class World1.
-     * 
-     */
     public World1()
     {    
         // Create a new world with 800x450 cells with a cell size of 1x1 pixels.
         super(800, 450, 1);
-        putInLocation();
+        Wraith wraith = new Wraith();
+        addObject(wraith,30,370);
+        Npc npc = new Npc();
+        addObject(npc, 760, 370);
+        Box box = new Box();
+        addObject(box, 280,120);
+        AnswerBox answerBox = new AnswerBox();
+        addObject(answerBox,550,75);
+        AnswerBox2 answerBox2 = new AnswerBox2();
+        addObject(answerBox2,550,168);
+        AnswerBox3 answerBox3 = new AnswerBox3();
+        addObject(answerBox3,720,75);
+        AnswerBox4 answerBox4 = new AnswerBox4();
+        addObject(answerBox4,720,168);
+        addObject(scoreLabel,20,20);
         createRocket();
         createQuestionAdd();
+        correct.setVolume(40);
+        wrong.setVolume(100);
     }
     
     public void gameOver()
@@ -47,6 +64,7 @@ public class World1 extends World
     { 
         if(check == rand)
         {
+            correct.play();
             score ++;
             scoreLabel.setValue(score);
             if(score % 10 == 0)
@@ -82,6 +100,7 @@ public class World1 extends World
         }
         else
         {
+            wrong.play();
             gameOver();
         }
     }
@@ -94,26 +113,7 @@ public class World1 extends World
         answer4.setValue("");
 
     }
-    
-    public void putInLocation()
-    {
-        Wraith wraith = new Wraith();
-        addObject(wraith,30,370);
-        Npc npc = new Npc();
-        addObject(npc, 760, 370);
-        Box box = new Box();
-        addObject(box, 280,120);
-        AnswerBox answerBox = new AnswerBox();
-        addObject(answerBox,550,75);
-        AnswerBox2 answerBox2 = new AnswerBox2();
-        addObject(answerBox2,550,168);
-        AnswerBox3 answerBox3 = new AnswerBox3();
-        addObject(answerBox3,720,75);
-        AnswerBox4 answerBox4 = new AnswerBox4();
-        addObject(answerBox4,720,168);
-        addObject(scoreLabel,20,20);
-    }
-    
+        
     public void createRocket()
     {
         Attack1 rocket = new Attack1();
