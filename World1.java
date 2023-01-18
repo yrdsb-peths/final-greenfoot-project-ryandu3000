@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.lang.Math.*;
 
 /**
  * Write a description of class World1 here.
@@ -12,7 +13,7 @@ public class World1 extends World
     GreenfootSound backgroundMusic = new GreenfootSound("background.mp3");
     
     int score = 0;
-    int level = 1;
+    int level = 4;
     int answer = 0;
     int rand = 0;
     Label scoreLabel = new Label(score,40);
@@ -33,7 +34,6 @@ public class World1 extends World
         putInLocation();
         createRocket();
         createQuestionAdd();
-        System.out.println("Answer:" + answer);
     }
     
     public void gameOver()
@@ -44,9 +44,7 @@ public class World1 extends World
     }
     
     public void checkanswer(int check)
-    {
-        System.out.println("Random:" + rand);
-        System.out.println("Check:" + check);  
+    { 
         if(check == rand)
         {
             score ++;
@@ -56,7 +54,26 @@ public class World1 extends World
                 level ++;
             }
             deleteQuestion();
-            createQuestionAdd();
+            if(level >= 2)
+            {
+                int max = 1;
+                int min = 0;
+                int range = max - min + 1;
+                int random = (int)(Math.random() * range) + min;
+                if(random == 0)
+                {
+                    System.out.println("Random:" + random);
+                    createQuestionAdd();
+                }
+                else if(random == 1)
+                {
+                    createQuestionMultiply();
+                }
+            }
+            else
+            {
+                createQuestionAdd();
+            }
             removeObjects(getObjects(Attack1.class));
             createRocket();
         }
@@ -95,10 +112,14 @@ public class World1 extends World
     public void createRocket()
     {
         Attack1 rocket = new Attack1();
-        if(level < 4)
+        if(level <= 4)
         {
             rocket.setSpeed(level);
-        }   
+        }
+        else
+        {
+            rocket.setSpeed(4);
+        }
         int x = 690;
         int y = 340;
         addObject(rocket,x,y);
@@ -110,6 +131,59 @@ public class World1 extends World
         MouseInfo mouse = Greenfoot.getMouseInfo();
     }
 
+    public void createQuestionMultiply()
+    {
+        int x1 = Greenfoot.getRandomNumber(12);
+        int y1 = Greenfoot.getRandomNumber(12);
+        question.setValue(x1 + " x " + y1 + " = ");
+        addObject(question, 280, 120);
+        answer = x1 * y1;
+        rand = Greenfoot.getRandomNumber(3);
+        if(rand == 0)
+        {
+            answer1.setValue(answer);
+            answer2.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
+            answer3.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
+            answer4.setValue(answer + 1 + Greenfoot.getRandomNumber(100));
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);    
+        }
+        else if(rand == 1)
+        {
+            answer2.setValue(answer);
+            answer1.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
+            answer3.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
+            answer4.setValue(answer + 1 + Greenfoot.getRandomNumber(100));
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);
+        }
+        else if(rand == 2)
+        {
+            answer3.setValue(answer);
+            answer1.setValue(answer + 1 + Greenfoot.getRandomNumber(100));
+            answer2.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
+            answer4.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);
+        }
+        else
+        {
+            answer4.setValue(answer);
+            answer1.setValue(answer + 1 + Greenfoot.getRandomNumber(5));
+            answer2.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
+            answer3.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);
+        }
+    }
     public void createQuestionAdd()
     {
         int x1 = Greenfoot.getRandomNumber(100);
@@ -122,7 +196,7 @@ public class World1 extends World
         {
             answer1.setValue(answer);
             answer2.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
-            answer3.setValue(answer + 1 - Greenfoot.getRandomNumber(10));
+            answer3.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
             answer4.setValue(answer + 1 + Greenfoot.getRandomNumber(100));
             addObject(answer1, 550,75);
             addObject(answer2, 550,168);
@@ -133,7 +207,7 @@ public class World1 extends World
         {
             answer2.setValue(answer);
             answer1.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
-            answer3.setValue(answer + 1 - Greenfoot.getRandomNumber(10));
+            answer3.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
             answer4.setValue(answer + 1 + Greenfoot.getRandomNumber(100));
             addObject(answer1, 550,75);
             addObject(answer2, 550,168);
@@ -145,7 +219,7 @@ public class World1 extends World
             answer3.setValue(answer);
             answer1.setValue(answer + 1 + Greenfoot.getRandomNumber(100));
             answer2.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
-            answer4.setValue(answer + 1 - Greenfoot.getRandomNumber(10));
+            answer4.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
             addObject(answer1, 550,75);
             addObject(answer2, 550,168);
             addObject(answer3, 720,75);
@@ -156,7 +230,7 @@ public class World1 extends World
             answer4.setValue(answer);
             answer1.setValue(answer + 1 + Greenfoot.getRandomNumber(5));
             answer2.setValue(answer + 1 + Greenfoot.getRandomNumber(10));
-            answer3.setValue(answer + 1 - Greenfoot.getRandomNumber(10));
+            answer3.setValue(answer - 1 - Greenfoot.getRandomNumber(10));
             addObject(answer1, 550,75);
             addObject(answer2, 550,168);
             addObject(answer3, 720,75);

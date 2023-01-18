@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     // Variables 
-    int level = 1;
+    int level = 2;
     
     //Sounds 
     //GreenfootSound backgroundMusic = new GreenfootSound
