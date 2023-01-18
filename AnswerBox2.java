@@ -18,7 +18,7 @@ public class AnswerBox2 extends Actor
         if(Greenfoot.mouseClicked(this))
         {
             World1 world = (World1) getWorld();
-            world.checkanswer(2);
+            world.checkanswer(1);
         }
     }
 }

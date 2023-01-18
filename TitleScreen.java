@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
     // Label
-    Label label1 = new Label("Wraith Chaser",100);
+    Label label1 = new Label("Wraith Math",100);
     Label label2 = new Label("space \u2192", 30);
     
     //Sounds
@@ -29,6 +29,8 @@ public class TitleScreen extends World
         ThiefDeco thiefDeco = new ThiefDeco();
         addObject(wraithDeco,300,324);
         addObject(thiefDeco,544,324);
+        //label1.setFillColor(Color.WHITE);
+
     }
 
     /**

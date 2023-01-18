@@ -30,5 +30,11 @@ public class Attack1 extends Actor
             world.gameOver();
         }
         
+         if(Greenfoot.mouseClicked(this))
+        {
+            System.out.println("Test 0");
+            World1 world = (World1) getWorld();
+            world.checkanswer(0);
+        }
     }
 }
