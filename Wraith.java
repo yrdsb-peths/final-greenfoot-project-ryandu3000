@@ -18,6 +18,7 @@ public class Wraith extends Actor
     private int speed = 2;
     private int vSpeed = 0;
     private int acceleration = 2;
+    private boolean Switch = true;
     public Wraith()
     {
         for(int i = 0; i < walkingRight.length; i++)
@@ -41,7 +42,7 @@ public class Wraith extends Actor
     
     public void animateWraith()
     {
-        if(walkingTimer.millisElapsed() < 80)
+        if(walkingTimer.millisElapsed() < 90)
         {
             return;
         }
@@ -82,30 +83,46 @@ public class Wraith extends Actor
         }
     }
     
-    public void act()
+    public void checkMovement()
     {
-        checkFall();
-        if(Greenfoot.isKeyDown("left") && Princess.getCanMove() == true)
+        if(Greenfoot.isKeyDown("left") && Thief.getCanMove() == true)
         {
             facing = "left";
             setLocation(getX() - speed, getY());
         }
-        else if(Greenfoot.isKeyDown("right") && Princess.getCanMove() == true)
+        else if(Greenfoot.isKeyDown("right") && Thief.getCanMove() == true)
         {
             facing = "right";
             setLocation(getX() + speed, getY());
         }
-        if(Greenfoot.isKeyDown("up") && Princess.getCanMove() == true && onGround())
+        if(Greenfoot.isKeyDown("up") && Thief.getCanMove() == true && onGround())
         {
-            vSpeed = -20;
+            vSpeed = -25;
             fall();
         }
-        
-        animateWraith();   
+    }
+    public void addedToMyWorld()
+    {
         MyWorld world = (MyWorld) getWorld();
-        if(isAtEdge() && getX() > 20)
+        Switch = true;
+    }
+    
+    public void addedToWorld1()
+    {
+        World1 world = (World1) getWorld();
+        Switch = false;
+    }
+    
+    public void act()
+    {
+        checkFall();
+        checkMovement();
+        animateWraith();
+        if(Switch && isAtEdge() && getX() > 200)
         {
-            world.switchWorld1();
+            World1 gameArea = new World1();
+            Greenfoot.setWorld((gameArea));
         }
     }
 }
+
