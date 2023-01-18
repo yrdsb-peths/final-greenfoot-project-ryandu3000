@@ -13,6 +13,8 @@ public class World1 extends World
 
     int score = 0;
     int level = 1;
+    int answer = 0;
+    int rand = 0;
     Label scoreLabel = new Label(score,20);
     /**
      * Constructor for objects of class World1.
@@ -25,8 +27,32 @@ public class World1 extends World
         putInLocation();
         createRocket();
         createQuestion();
+        System.out.println("Answer:" + answer);
+        Pointer pointer = new Pointer();
+        addObject(pointer,-10,-10);
     }
     
+    public void gameOver()
+    {
+        backgroundMusic.stop();
+        gameOver endscreen = new gameOver();
+        Greenfoot.setWorld(endscreen);
+    }
+    
+    public void checkanswer(int check)
+    {
+        System.out.println("Random:" + rand);
+        System.out.println("Check:" + check);  
+        if(check == rand)
+        {
+            score += 1;
+            createQuestion();
+        }
+        //else
+        //{
+         //   gameOver();
+        //}
+    }
     public void putInLocation()
     {
         Wraith wraith = new Wraith();
@@ -63,10 +89,11 @@ public class World1 extends World
         int y1 = Greenfoot.getRandomNumber(100);
         Label question = new Label(x1 + " + " + y1 + " = ",50);
         addObject(question, 280,120);
-        int answer = x1 +y1;
-        int rand = Greenfoot.getRandomNumber(3);
+        answer = x1 +y1;
+        rand = Greenfoot.getRandomNumber(3);
         if(rand == 0)
         {
+            System.out.println("0");
             Label answer1 = new Label(answer,25);
             Label answer2 = new Label(answer + Greenfoot.getRandomNumber(10),25);
             Label answer3 = new Label(answer - Greenfoot.getRandomNumber(10),25);
@@ -74,10 +101,11 @@ public class World1 extends World
             addObject(answer1, 550,75);
             addObject(answer2, 550,168);
             addObject(answer3, 720,75);
-            addObject(answer4, 720,168);
+            addObject(answer4, 720,168);    
         }
         else if(rand == 1)
         {
+            System.out.println("1");
             Label answer2 = new Label(answer,25);
             Label answer1 = new Label(answer + Greenfoot.getRandomNumber(10),25);
             Label answer3 = new Label(answer - Greenfoot.getRandomNumber(10),25);
@@ -89,7 +117,7 @@ public class World1 extends World
         }
         else if(rand == 2)
         {
-            System.out.println("hi");
+            System.out.println("2");
             Label answer3 = new Label(answer,25);
             Label answer1 = new Label(answer + Greenfoot.getRandomNumber(100),25);
             Label answer2 = new Label(answer + Greenfoot.getRandomNumber(10),25);
@@ -101,6 +129,7 @@ public class World1 extends World
         }
         else
         {
+            System.out.println("3");
             Label answer4 = new Label(answer,25);
             Label answer1 = new Label(answer + Greenfoot.getRandomNumber(5),25);
             Label answer2 = new Label(answer + Greenfoot.getRandomNumber(10),25);

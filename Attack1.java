@@ -26,6 +26,8 @@ public class Attack1 extends Actor
         if(isTouching(Wraith.class))
         {
             removeTouching((Wraith.class));
+            World1 world = (World1) getWorld();
+            world.gameOver();
         }
         
     }
