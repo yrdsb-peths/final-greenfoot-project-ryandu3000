@@ -32,7 +32,7 @@ public class World1 extends World
         super(800, 450, 1);
         putInLocation();
         createRocket();
-        createQuestion();
+        createQuestionAdd();
         System.out.println("Answer:" + answer);
     }
     
@@ -49,9 +49,14 @@ public class World1 extends World
         System.out.println("Check:" + check);  
         if(check == rand)
         {
-            score += 1;
+            score ++;
+            scoreLabel.setValue(score);
+            if(score % 10 == 0)
+            {
+                level ++;
+            }
             deleteQuestion();
-            createQuestion();
+            createQuestionAdd();
             removeObjects(getObjects(Attack1.class));
             createRocket();
         }
@@ -90,6 +95,10 @@ public class World1 extends World
     public void createRocket()
     {
         Attack1 rocket = new Attack1();
+        if(level < 4)
+        {
+            rocket.setSpeed(level);
+        }   
         int x = 690;
         int y = 340;
         addObject(rocket,x,y);
@@ -101,7 +110,7 @@ public class World1 extends World
         MouseInfo mouse = Greenfoot.getMouseInfo();
     }
 
-    public void createQuestion()
+    public void createQuestionAdd()
     {
         int x1 = Greenfoot.getRandomNumber(100);
         int y1 = Greenfoot.getRandomNumber(100);

@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Attack1 extends Actor
 {
+    int speed = 1;
     public Attack1()
     {
         GreenfootImage image = getImage();
@@ -19,22 +20,26 @@ public class Attack1 extends Actor
      */
     public void act()
     {
-        int x = getX() - 1;
+        int x = getX() - speed;
         int y = getY();
         setLocation(x,y);
         
         if(isTouching(Wraith.class))
         {
-            removeTouching((Wraith.class));
             World1 world = (World1) getWorld();
+            removeTouching((Wraith.class));
             world.gameOver();
         }
         
          if(Greenfoot.mouseClicked(this))
         {
-            System.out.println("Test 0");
             World1 world = (World1) getWorld();
             world.checkanswer(0);
         }
+    }
+    
+    public void setSpeed(int spd)
+    {
+        speed = spd;
     }
 }
