@@ -21,18 +21,29 @@ public class World1 extends World
     public World1()
     {    
         // Create a new world with 800x450 cells with a cell size of 1x1 pixels.
-        super(800, 450, 1); 
+        super(800, 450, 1);
+        putInLocation();
+        createRocket();
+        createQuestion();
+    }
+    
+    public void putInLocation()
+    {
         Wraith wraith = new Wraith();
-        addObject(wraith, 50, 370);
+        addObject(wraith,30,370);
         Npc npc = new Npc();
         addObject(npc, 760, 370);
-        createRocket();
         Box box = new Box();
-        addObject(box, getWidth()/2,120);
-        createQuestion();
-        prepare();
+        addObject(box, 280,120);
+        AnswerBox answerBox = new AnswerBox();
+        addObject(answerBox,550,75);
+        AnswerBox answerBox2 = new AnswerBox();
+        addObject(answerBox2,550,168);
+        AnswerBox answerBox3 = new AnswerBox();
+        addObject(answerBox3,720,75);
+        AnswerBox answerBox4 = new AnswerBox();
+        addObject(answerBox4,720,168);
     }
-
     public void createRocket()
     {
         Attack1 rocket = new Attack1();
@@ -51,26 +62,53 @@ public class World1 extends World
         int x1 = Greenfoot.getRandomNumber(100);
         int y1 = Greenfoot.getRandomNumber(100);
         Label question = new Label(x1 + " + " + y1 + " = ",50);
-        addObject(question, getWidth()/2,120);
-    }
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    private void prepare()
-    {
-        AnswerBox answerBox = new AnswerBox();
-        addObject(answerBox,706,86);
-        answerBox.setLocation(648,65);
-        AnswerBox answerBox2 = new AnswerBox();
-        addObject(answerBox2,653,168);
-        answerBox.setLocation(542,88);
-        answerBox.setLocation(542,46);
-        answerBox2.setLocation(697,55);
-        AnswerBox answerBox3 = new AnswerBox();
-        addObject(answerBox3,528,156);
-        AnswerBox answerBox4 = new AnswerBox();
-        addObject(answerBox4,714,152);
-        answerBox4.setLocation(696,154);
+        addObject(question, 280,120);
+        int answer = x1 +y1;
+        int rand = Greenfoot.getRandomNumber(3);
+        if(rand == 0)
+        {
+            Label answer1 = new Label(answer,25);
+            Label answer2 = new Label(answer + Greenfoot.getRandomNumber(10),25);
+            Label answer3 = new Label(answer - Greenfoot.getRandomNumber(10),25);
+            Label answer4 = new Label(answer + Greenfoot.getRandomNumber(100),25);
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);
+        }
+        else if(rand == 1)
+        {
+            Label answer2 = new Label(answer,25);
+            Label answer1 = new Label(answer + Greenfoot.getRandomNumber(10),25);
+            Label answer3 = new Label(answer - Greenfoot.getRandomNumber(10),25);
+            Label answer4 = new Label(answer + Greenfoot.getRandomNumber(100),25);
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);
+        }
+        else if(rand == 2)
+        {
+            System.out.println("hi");
+            Label answer3 = new Label(answer,25);
+            Label answer1 = new Label(answer + Greenfoot.getRandomNumber(100),25);
+            Label answer2 = new Label(answer + Greenfoot.getRandomNumber(10),25);
+            Label answer4 = new Label(answer - Greenfoot.getRandomNumber(10),25);
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);
+        }
+        else
+        {
+            Label answer4 = new Label(answer,25);
+            Label answer1 = new Label(answer + Greenfoot.getRandomNumber(5),25);
+            Label answer2 = new Label(answer + Greenfoot.getRandomNumber(10),25);
+            Label answer3 = new Label(answer - Greenfoot.getRandomNumber(10),25);
+            addObject(answer1, 550,75);
+            addObject(answer2, 550,168);
+            addObject(answer3, 720,75);
+            addObject(answer4, 720,168);
+        }
     }
 }
