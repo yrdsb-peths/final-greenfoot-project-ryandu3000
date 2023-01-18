@@ -14,7 +14,7 @@ public class InstructionPage extends World
     Label label3 = new Label("get it back!",30);
     Label label4 = new Label("Dodge the attacks for as long as possible!", 30);
     Label label5 = new Label("Use \u2190 \u2192 to move and \u2191 to jump!", 30);
-    Label label6 = new Label("Press  <space>  to  Start", 30);
+    Label label6 = new Label("Press  [space]  to  Start", 30);
     
     SimpleTimer delay = new SimpleTimer();
     /**
@@ -34,7 +34,6 @@ public class InstructionPage extends World
         addObject(label4, 510, 230);
         addObject(label5, 450, 260);
         addObject(label6, 650,400);
-        
         delay.mark();
     }
     

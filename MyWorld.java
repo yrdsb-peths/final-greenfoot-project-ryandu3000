@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     // Variables 
-    int level = 2;
-    
+    Label label = new Label("Hahahaha ur bad at math!",30);
+    SimpleTimer delay = new SimpleTimer();
     //Sounds 
     //GreenfootSound backgroundMusic = new GreenfootSound
     /**
@@ -27,7 +27,20 @@ public class MyWorld extends World
         addObject(wraith, 50, 370);
         Thief npc = new Thief();
         addObject(npc, 120, 370);
-        
+        label.setFillColor(Color.WHITE);
+        delay.mark();
         //backgroundMusic.playLoop();
+    }
+    
+    public void act()
+    {
+        if(delay.millisElapsed() > 500)
+        {
+            addObject(label,getWidth()/2,200);
+        }
+        if(delay.millisElapsed() > 4000)
+        {
+            label.setValue("");
+        }
     }
 }

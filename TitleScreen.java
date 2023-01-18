@@ -29,7 +29,8 @@ public class TitleScreen extends World
         ThiefDeco thiefDeco = new ThiefDeco();
         addObject(wraithDeco,300,324);
         addObject(thiefDeco,544,324);
-        //label1.setFillColor(Color.WHITE);
+        label1.setFillColor(Color.WHITE);
+        label2.setFillColor(Color.WHITE);
 
     }
 
