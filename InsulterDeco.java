@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ThiefDeco extends Deco
+public class InsulterDeco extends Deco
 {
     /**
      * Act - do whatever the ThiefDeco wants to do. This method is called whenever

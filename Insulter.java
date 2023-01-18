@@ -1,19 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Thief here.
+ * Sprite used for animation.
  * 
  * @author Ryan Du
  * @version (a version number or a date)
  */
-public class Thief extends Actor
+public class Insulter extends Actor
 {
     GreenfootImage[] crying = new GreenfootImage[12];
     int imageIndex = 0;
     SimpleTimer cryingTimer = new SimpleTimer();
     public static boolean canMove = false;
     
-    public Thief()
+    public Insulter()
     {
         for(int i = 0; i < crying.length; i++)
         {

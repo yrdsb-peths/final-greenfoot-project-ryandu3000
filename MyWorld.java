@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * Intro scene to the game.
  * 
  * @author Ryan Du
  * @version Jan 2023
@@ -11,6 +11,9 @@ public class MyWorld extends World
     // Variables 
     Label label = new Label("Hahahaha ur bad at math!",30);
     SimpleTimer delay = new SimpleTimer();
+    Wraith wraith = new Wraith();
+    Insulter npc = new Insulter();
+    
     //Sounds 
     //GreenfootSound backgroundMusic = new GreenfootSound
     /**
@@ -22,12 +25,10 @@ public class MyWorld extends World
         // Create a new world with 960x540 cells with a cell size of 1x1 pixels.
         super(800, 450, 1);
         
-        // Adds the sprites to the game
-        Wraith wraith = new Wraith();
+        // Adds the objects to the game
         addObject(wraith, 50, 370);
-        Thief npc = new Thief();
         addObject(npc, 120, 370);
-        label.setFillColor(Color.WHITE);
+        
         delay.mark();
         //backgroundMusic.playLoop();
     }

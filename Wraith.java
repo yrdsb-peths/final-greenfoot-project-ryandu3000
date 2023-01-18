@@ -85,17 +85,17 @@ public class Wraith extends Actor
     
     public void checkMovement()
     {
-        if(Greenfoot.isKeyDown("left") && Thief.getCanMove() == true)
+        if(Greenfoot.isKeyDown("left") && Insulter.getCanMove() == true)
         {
             facing = "left";
             setLocation(getX() - speed, getY());
         }
-        else if(Greenfoot.isKeyDown("right") && Thief.getCanMove() == true)
+        else if(Greenfoot.isKeyDown("right") && Insulter.getCanMove() == true)
         {
             facing = "right";
             setLocation(getX() + speed, getY());
         }
-        if(Greenfoot.isKeyDown("up") && Thief.getCanMove() == true && onGround())
+        if(Greenfoot.isKeyDown("up") && Insulter.getCanMove() == true && onGround())
         {
             vSpeed = -25;
             fall();

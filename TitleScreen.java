@@ -26,12 +26,9 @@ public class TitleScreen extends World
         addObject(label1, getWidth()/2, 80);
         addObject(label2, 725, 425);
         WraithDeco wraithDeco = new WraithDeco();
-        ThiefDeco thiefDeco = new ThiefDeco();
+        InsulterDeco insulterDeco = new InsulterDeco();
         addObject(wraithDeco,300,324);
-        addObject(thiefDeco,544,324);
-        label1.setFillColor(Color.WHITE);
-        label2.setFillColor(Color.WHITE);
-
+        addObject(insulterDeco,544,324);
     }
 
     /**

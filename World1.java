@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.Math.*;
 
 /**
- * Write a description of class World1 here.
+ * Main game world.
  * 
  * @author Ryan Du
  * @version Jan 2023
@@ -15,7 +15,7 @@ public class World1 extends World
     GreenfootSound wrong = new GreenfootSound("wrong.mp3");
     
     // Variables
-    public static int score = 0;
+    int score = 0;
     int level = 1;
     int answer = 0;
     int rand = 0;
@@ -28,27 +28,44 @@ public class World1 extends World
     Label answer3 = new Label("",20);
     Label answer4 = new Label("",20);
     
+    //Objects
+    Wraith wraith = new Wraith();
+    Npc npc = new Npc();
+    Box box = new Box();
+    AnswerBox answerBox = new AnswerBox();
+    AnswerBox2 answerBox2 = new AnswerBox2();
+    AnswerBox3 answerBox3 = new AnswerBox3();
+    AnswerBox4 answerBox4 = new AnswerBox4();
+    /**
+     * Constructor for objects of class InstructionPage.
+     */
     public World1()
     {    
         // Create a new world with 800x450 cells with a cell size of 1x1 pixels.
         super(800, 450, 1);
-        Wraith wraith = new Wraith();
+        
+        // Adding objects onto the screen
         addObject(wraith,30,370);
-        Npc npc = new Npc();
         addObject(npc, 760, 370);
-        Box box = new Box();
         addObject(box, 280,120);
-        AnswerBox answerBox = new AnswerBox();
         addObject(answerBox,550,75);
-        AnswerBox2 answerBox2 = new AnswerBox2();
         addObject(answerBox2,550,168);
-        AnswerBox3 answerBox3 = new AnswerBox3();
         addObject(answerBox3,720,75);
-        AnswerBox4 answerBox4 = new AnswerBox4();
         addObject(answerBox4,720,168);
         addObject(scoreLabel,20,20);
+        
+        // Changing the colors of the labels
+        question.setFillColor(Color.BLACK);
+        answer1.setFillColor(Color.BLACK);
+        answer2.setFillColor(Color.BLACK);
+        answer3.setFillColor(Color.BLACK);
+        answer4.setFillColor(Color.BLACK);
+        
+        // Creating a rocket and creating an addition question
         createRocket();
         createQuestionAdd();
+        
+        // Changing volume
         correct.setVolume(40);
         wrong.setVolume(100);
     }

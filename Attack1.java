@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Attack1 here.
  * 
- * @author (your name) 
+ * @author Ryan Du
  * @version (a version number or a date)
  */
 public class Attack1 extends Actor
