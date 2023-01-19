@@ -43,6 +43,7 @@ public class MyWorld extends World
         World1 game = new World1();
         Greenfoot.setWorld(game);
     }
+    
     /**
      * Do whatever the world wants to do. This method is called whenever
      * the 'Act'or 'Run' button gets pressed in the environment.
