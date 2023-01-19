@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WraithDeco here.
+ * Decoration of the wraith.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ryan Du
+ * @version Jan 2023
  */
 public class WraithDeco extends Deco
 {

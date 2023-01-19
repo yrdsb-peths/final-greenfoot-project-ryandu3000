@@ -25,7 +25,7 @@ public class InstructionPage extends World
         // Create a new world with 800x450 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
         
-        // Adding all the objects onto the screen
+        // Adds  all the objects onto the screen
         WraithDeco wraithDeco = new WraithDeco();
         addObject(wraithDeco,166,280);
         addObject(label1,getWidth()/2,60);
@@ -45,7 +45,6 @@ public class InstructionPage extends World
     public void act()
     {
         // Whenever space is pressed change the world to MyWorld.
-        // Delays half a second so you don't accidentally skip.
         if(Greenfoot.isKeyDown("space") && delay.millisElapsed() > 500)
         {
             MyWorld gameWorld = new MyWorld();

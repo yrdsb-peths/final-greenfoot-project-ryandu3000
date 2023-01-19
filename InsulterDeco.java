@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ThiefDeco here.
+ * Decoration of the insulter.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ryan Du
+ * @version Jan 2023
  */
 public class InsulterDeco extends Deco
 {

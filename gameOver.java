@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Ending screen for my game.
  * 
@@ -35,8 +34,13 @@ public class gameOver extends World
         addObject(cryingWraithDeco,280,328);
     }
 
+    /**
+     * Act - do whatever the wraith wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
+        // If space is pressed replays the game by going back to MyWorld. If enter is pressed ends the game.
         if(Greenfoot.isKeyDown("space"))
         {
             MyWorld gameWorld = new MyWorld();

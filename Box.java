@@ -1,13 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Box here.
+ * Box where the question goes.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ryan Du 
+ * @version Jan 2023
  */
 public class Box extends Actor
 {
+    /**
+     * Constructor for objects of class Box.
+     */
     public Box()
     {
         GreenfootImage image = getImage();

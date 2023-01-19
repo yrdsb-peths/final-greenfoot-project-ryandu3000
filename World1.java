@@ -44,7 +44,7 @@ public class World1 extends World
         // Create a new world with 800x450 cells with a cell size of 1x1 pixels.
         super(800, 450, 1);
         
-        // Adding objects onto the screen
+        // Adds objects onto the screen
         addObject(wraith,30,370);
         addObject(npc, 760, 370);
         addObject(box, 280,120);
@@ -60,16 +60,21 @@ public class World1 extends World
         answer2.setFillColor(Color.BLACK);
         answer3.setFillColor(Color.BLACK);
         answer4.setFillColor(Color.BLACK);
+        scoreLabel.setFillColor(Color.BLACK);
         
-        // Creating a rocket and creating an addition question
+        // Creates a rocket and creates an addition question
         createRocket();
         createQuestionAdd();
         
-        // Changing volume
-        correct.setVolume(40);
+        // Changes volume
+        correct.setVolume(60);
         wrong.setVolume(100);
+        backgroundMusic.setVolume(70);
     }
     
+    /**
+     * This method switches the world to the end screen and stops the music.
+     */
     public void gameOver()
     {
         backgroundMusic.stop();
@@ -77,6 +82,10 @@ public class World1 extends World
         Greenfoot.setWorld(endscreen);
     }
     
+    /**
+     * This method checks if the answer is correct. If it is it will 
+     * create another question and if not it will end the game.
+     */
     public void checkanswer(int check)
     { 
         if(check == rand)
@@ -122,6 +131,9 @@ public class World1 extends World
         }
     }
     
+    /**
+     * Sets the value of the labels in the answer boxes to an empty string.
+     */
     public void deleteQuestion()
     {
         answer1.setValue("");
@@ -130,7 +142,10 @@ public class World1 extends World
         answer4.setValue("");
 
     }
-        
+    
+    /**
+     * Creates a rocket with a speed of the level.
+     */
     public void createRocket()
     {
         Attack1 rocket = new Attack1();
@@ -146,13 +161,20 @@ public class World1 extends World
         int y = 340;
         addObject(rocket,x,y);
     }
-
+    
+    /**
+     * Act - do whatever the wraith wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         backgroundMusic.playLoop();
         MouseInfo mouse = Greenfoot.getMouseInfo();
     }
 
+    /**
+     * Creates a multiplication question with numbers ranging from 0 to 14.
+     */
     public void createQuestionMultiply()
     {
         int x1 = Greenfoot.getRandomNumber(14);
@@ -163,6 +185,9 @@ public class World1 extends World
         putAnswerBoxes();
     }
     
+    /**
+     * Creates a subtraction question with numbers ranging from 0 to 50.
+     */
     public void createQuestionSubtract()
     {
         int x1 = Greenfoot.getRandomNumber(50);
@@ -173,6 +198,9 @@ public class World1 extends World
         putAnswerBoxes();
     }
     
+    /**
+     * Creates an addition question with numbers ranging from 0 to 100.
+     */
     public void createQuestionAdd()
     {
         int x1 = Greenfoot.getRandomNumber(100);
@@ -183,6 +211,9 @@ public class World1 extends World
         putAnswerBoxes();
     }
     
+    /**
+     * Places the answer labels into their locations.    
+     */
     public void putAnswerBoxes()
     {
         rand = Greenfoot.getRandomNumber(3);
