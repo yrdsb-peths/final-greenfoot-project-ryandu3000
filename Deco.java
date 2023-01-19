@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ThiefDeco here.
+ * Decoration I use for the worlds.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ryan Du
+ * @version Jan 2023
  */
-public class ThiefDeco extends Actor
+public class Deco extends Actor
 {
     /**
-     * Act - do whatever the ThiefDeco wants to do. This method is called whenever
+     * Act - do whatever the Deco wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

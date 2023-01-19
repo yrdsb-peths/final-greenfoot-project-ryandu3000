@@ -8,9 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-    // Label
+    // Labels
     Label label1 = new Label("Wraith Math",100);
     Label label2 = new Label("space \u2192", 30);
+    
+    WraithDeco wraithDeco = new WraithDeco();
+    InsulterDeco insulterDeco = new InsulterDeco();
     
     //Sounds
     GreenfootSound backgroundMusic = new GreenfootSound("intro.mp3");
@@ -22,15 +25,11 @@ public class TitleScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
         
-        // Adds the label and deoration onto the world
+        // Adds the objects onto the world
         addObject(label1, getWidth()/2, 80);
         addObject(label2, 725, 425);
-        WraithDeco wraithDeco = new WraithDeco();
-        ThiefDeco thiefDeco = new ThiefDeco();
         addObject(wraithDeco,300,324);
-        addObject(thiefDeco,544,324);
-        //label1.setFillColor(Color.WHITE);
-
+        addObject(insulterDeco,544,324);
     }
 
     /**

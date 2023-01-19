@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Npc here.
+ * Npc decoration with an animation.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ryan Du
+ * @version Jan 2023
  */
 public class Npc extends Actor
 {
@@ -12,6 +12,9 @@ public class Npc extends Actor
     int imageIndex = 0;
     SimpleTimer attackTimer = new SimpleTimer();
 
+    /**
+     * Constructor for objects of the class Npc.
+     */
     public Npc()
     {
         for(int i = 0; i < attack.length; i++)
@@ -24,6 +27,9 @@ public class Npc extends Actor
         setImage(attack[0]);
     }
     
+    /**
+     * Does an animation in place.
+     */
     public void sequence()
     {
         if(attackTimer.millisElapsed() < 150)
@@ -34,6 +40,11 @@ public class Npc extends Actor
         imageIndex = (imageIndex + 1) % attack.length;
         attackTimer.mark();
     }
+    
+    /**
+     * Act - do whatever the Npc wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         sequence();

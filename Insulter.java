@@ -1,19 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Thief here.
+ * Sprite who insults the wraith.
  * 
  * @author Ryan Du
- * @version (a version number or a date)
+ * @version Jan 2023
  */
-public class Thief extends Actor
+public class Insulter extends Actor
 {
+    // variables
     GreenfootImage[] crying = new GreenfootImage[12];
     int imageIndex = 0;
     SimpleTimer cryingTimer = new SimpleTimer();
-    public static boolean canMove = true;
-    
-    public Thief()
+    public static boolean canMove = false;
+    /**
+     * Constructor for the objects of class Insulter.
+     */
+    public Insulter()
     {
         for(int i = 0; i < crying.length; i++)
         {
@@ -25,6 +28,9 @@ public class Thief extends Actor
         setImage(crying[0]);
     }
     
+    /**
+     * Runs to the end of the world.
+     */
     public void animationsequence1()
     {
         while(isAtEdge() == false)
@@ -40,21 +46,32 @@ public class Thief extends Actor
         }
     }
     
+    /**
+     * returns the boolean value of canMove;
+     */
     public static boolean getCanMove()
     {
         return canMove;
     }
     
+    /**
+     * Does the animation sequence when added to MyWorld.
+     */
     public void addedToMyWorld()
     {
         MyWorld world = (MyWorld) getWorld();
         animationsequence1();
     }
     
+    /**
+     * Act - do whatever the Insulter wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
         animationsequence1();
+        // removes the object when it touches the edge of the world.
         if(isAtEdge())
         {
             world.removeObject(this);   

@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Decoration of the wraith.
+ * Decoration of a crying wraith.
  * 
  * @author Ryan Du
  * @version Jan 2023
  */
-public class WraithDeco extends Deco
+public class CryingWraithDeco extends Deco
 {
     /**
-     * Act - do whatever the WraithDeco wants to do. This method is called whenever
+     * Act - do whatever the CryingWraithDeco wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

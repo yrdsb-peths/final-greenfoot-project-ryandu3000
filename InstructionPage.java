@@ -10,11 +10,11 @@ public class InstructionPage extends World
 {
     // Labels 
     Label label1 = new Label("Instructions", 90);
-    Label label2 = new Label("A thief just stole your money, follow them to",30);
-    Label label3 = new Label("get it back!",30);
-    Label label4 = new Label("Dodge the attacks for as long as possible!", 30);
-    Label label5 = new Label("Use \u2190 \u2192 to move and \u2191 to jump!", 30);
-    Label label6 = new Label("Press  <space>  to  Start", 30);
+    Label label2 = new Label("You just got told your bad at math, follow",30);
+    Label label3 = new Label("them to prove them wrong!",30);
+    Label label4 = new Label("Click the correct answers to the question!", 30);
+    Label label5 = new Label("Use \u2190 \u2192 to move!", 30);
+    Label label6 = new Label("Press  [space]  to  Start", 30);
     
     SimpleTimer delay = new SimpleTimer();
     /**
@@ -25,14 +25,14 @@ public class InstructionPage extends World
         // Create a new world with 800x450 cells with a cell size of 1x1 pixels.
         super(800, 450, 1); 
         
-        // Adding all the labels and decorations onto the screen
+        // Adds  all the objects onto the screen
         WraithDeco wraithDeco = new WraithDeco();
         addObject(wraithDeco,166,280);
         addObject(label1,getWidth()/2,60);
-        addObject(label2,520,150);
-        addObject(label3,337,180);
-        addObject(label4, 510, 230);
-        addObject(label5, 450, 260);
+        addObject(label2,500,150);
+        addObject(label3,422,180);
+        addObject(label4, 507, 230);
+        addObject(label5, 373, 260);
         addObject(label6, 650,400);
         
         delay.mark();
